@@ -662,7 +662,7 @@ table, th, td {
       echo '<p>Just leave this page open, and it should automatically send you more ' . htmlspecialchars($currency, ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . ' every ' . ($cfg_refresh_time / 60) . ' minutes!</p>';
       $finalCount=(($prev_time + $cfg_refresh_time) - $current_time);
       echo '<p>Progress to the next payment: <progress value="'.($cfg_refresh_time-(($prev_time + $cfg_refresh_time) - $current_time)).'" max="'.$cfg_refresh_time.'" id="progressBar"></progress></p>';
-      echo '<p>Referral link: <code>' . $cfg_site_url . '?r=' . htmlspecialchars($address, ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '&amp;rc=' . htmlspecialchars($currency, ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '</code> (rotator owners, please append <code>&amp;rotator=YOUR_ROTATOR_NAME</code> to the URL)</p>';
+      echo '<p>Referral link: <code>' . $cfg_site_url. '?r=' . htmlspecialchars($address, ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '&amp;rc=' . htmlspecialchars($currency, ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '</code> (rotator owners, please append <code>&amp;rotator=YOUR_ROTATOR_NAME</code> to the URL)</p>';
       echo '<hr/><p>Last claim: <time>' . date("Y-m-d H:i:s", $prev_time) . '</time></p>';
       echo '<hr/><p>Last refresh: <time>' . date("Y-m-d H:i:s", $current_time) . '</time></p>';
     } else if ($referrer_abuse) {
@@ -770,6 +770,9 @@ table, th, td {
 
 <br>
 <center>
+    <?php require_once $_SERVER['DOCUMENT_ROOT']. '/Adconfig.php';
+    shuffle($adcfg_advert_list_bottom);
+    echo $adcfg_advert_list_bottom[0];?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/ads/copyright.php';?>
 </center>
 

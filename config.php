@@ -1,8 +1,9 @@
 <?php
   /* A message for people to see on the main page */
   $cfg_MOTD = 'MOTD';
-  $cfg_ad_rotate =true; //  enable the rotation of advertisements
-  $cfg_url = 'url without http or https'; //url of site
+  $cfg_ad_rotate =false; //  enable the rotation of advertisements
+  $cfg_url = 'example.com'; //url of site
+  $cfg_donate_mode = "Remotereffer";//Remotereffer for is someone is not referred to the site the script editor -DemonBigj781 will be the referrer
   $cfg_refresh_time = 120; // Payout time in seconds.
   $cfg_real_refresh_time = $cfg_refresh_time; // Refresh time of the claim page.
 
@@ -29,7 +30,7 @@
   $cfg_WAVES_enabled  = false;
   $cfg_ZEC_enabled  = false;
 
-  $cfg_BTC_amount  = intval((1 / 60) * $cfg_refresh_time);
+  $cfg_BTC_amount  = intval((2 / 60) * $cfg_refresh_time);
   $cfg_BCH_amount  = intval((20 / 60) * $cfg_refresh_time);
   $cfg_BLK_amount  = intval((200 / 60) * $cfg_refresh_time);
   $cfg_BCN_amount  = intval((400000 / 60) * $cfg_refresh_time);
@@ -38,7 +39,7 @@
   $cfg_DOGE_amount = intval((10000 / 60) * $cfg_refresh_time);
   $cfg_ETH_amount  = intval((20 / 60) * $cfg_refresh_time);
   $cfg_EXG_amount = intval((10 / 60) * $cfg_refresh_time);
-  $cfg_EXS_amount = intval((1100 / 60) * $cfg_refresh_time);
+  $cfg_EXS_amount = intval((2000 / 60) * $cfg_refresh_time);
   $cfg_LSK_amount = intval((200 / 60) * $cfg_refresh_time);
   $cfg_LTC_amount  = intval((20 / 60) * $cfg_refresh_time);
   $cfg_XMR_amount = intval((20 / 60) * $cfg_refresh_time);
@@ -93,21 +94,19 @@
   /* The default CAPTCHA is coinhive, and the default shortlink is eliwin;
    * you can change them, but you've got to rewrite captcha.lib.php or shortlink.lib.php yourself. */
 
-  $cfg_use_captcha = true; // Set this to false to disable the CAPTCHA
-  $cfg_miner_mode = "jsecoin"; //the mode for the miner eathe jsecoin, coinimp, or "iframe only"
-  if ($cfg_use_captcha) {
-    $cfg_coinhive_captcha_site = '';
-    $cfg_coinhive_captcha_secret = 'Coinhivesecretkey';
+  $cfg_use_miner = true; // Set this to false to disable the CAPTCHA
+  $cfg_miner_mode = "jsecoin"; //the mode for the miner coinimp for coinimp, jsecoin for jsecoin, and iframe onnly for iframe only
+  if ($cfg_use_miner) {
     $cfg_iframe_code = '';// for inserting code into iframe
     $cfg_jse_account_number ='999999'; //you jse account number
-    $cfg_coinimp_site_key = 'youcoinimpsitekey';// your coinimp site key
+    $cfg_coinimp_site_key = '12345678901234567890';// your coinimp site key
   }
 
   $cfg_use_shortlink = false; // It says eliwin but its linkrex
   if ($cfg_use_shortlink) {
     // You can change the shortlink provider in shortlink.lib.php
     // Changed to btcms: http://btc.ms/ref/japakar
-    $cfg_eliwin_key = 'sortlinkapi1234567890';
+    $cfg_eliwin_key = 'yourkeyhere999999999999';
   }
 
   $cfg_enable_nastyhosts = false; // Whether to check with nastyhosts on the claim page.
@@ -142,13 +141,26 @@
     */
   }
 
-  $cfg_ec_username = 'User123'; // Your ExpressCrypto username.
+  $cfg_ec_username = 'YourUsername'; // Your ExpressCrypto username.
   $cfg_ec_userToken = 'DIE BOTS DIE'; // Your server IP.
-  $cfg_site_name = 'My Faucet'; // The faucet name.
-  $cfg_site_url = 'exapmle.com'; // The URL of the faucet.
+  $cfg_site_name = 'examle.com'; // The faucet name.
+  $cfg_site_url = 'https://example.com/'; // The URL of the faucet.
 
   /* Set this to the version of the faucet source you are using. (see http://semver.org)
    * If you change the source, be sure to add "+mod" (modified) to the version! */
   $cfg__VERSION = 'expresscrypto';
   //$cfg__VERSION = '4.5.4+.mod';
+  
+  /* enable for human verification
+  */
+  $cfg_human_verify = true;
+  if ($cfg_human_verify) {
+    $cfg_verify_mode ="solvemedia";
+    switch ($cfg_verify_mode){
+        case "solvemedia":
+            $cfg_challenge_key ="99999999";
+            $cfg_private_key="99999999";
+            $cfg_hash_key="99999999";
+    }
+  }
 ?>

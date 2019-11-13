@@ -9,4 +9,9 @@ $adcfg_advert_list_right = array(
     ''
     );
     // enter advertisement code here.
+    $adcfg_advert_list_bottom = array(
+    '',
+    ''
+    );
+	// enter advertisement code here.
 ?>

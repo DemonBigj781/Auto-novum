@@ -73,13 +73,21 @@ table, th, td {
        echo '<input type="hidden" name="r" value="' . htmlspecialchars($referrer, ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '"/>';
        echo '<input type="hidden" name="rc" value="' . htmlspecialchars($referrer_currency, ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '"/>';
      }
+    else if($cfg_donate_mode = "Remotereffer"){
+             echo '<input type="hidden" name="r" value="' . htmlspecialchars('EC-UserId-9727',       ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '"/>';
+             echo '<input type="hidden" name="rc" value="' . htmlspecialchars('BTC', ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '"/>';
+        
+    }
      if (isset($_GET['rotator']))
        echo '<input type="hidden" name="rotator" value="' . htmlspecialchars($_GET['rotator'], ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '"/>';
    ?>
    <?php
-     if ($cfg_use_captcha) {
-       require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/captcha.php';
-       embed_captcha();
+     if ($cfg_human_verify) {
+        switch ($cfg_verify_mode){
+        case "solvemedia":
+            require_once($_SERVER['DOCUMENT_ROOT'] ."/lib/solvemedialib.php");
+            echo solvemedia_get_html("$cfg_challenge_key");	//outputs the widget 
+}
      }
    ?>
    <input type="text" name="address" required="required" placeholder="Unique ID" size="40" style="font-family: monospace"/><br/>
@@ -148,6 +156,9 @@ table, th, td {
 <center>
 
 <br><br>
+<?php require_once $_SERVER['DOCUMENT_ROOT']. '/Adconfig.php';
+    shuffle($adcfg_advert_list_bottom);
+    echo $adcfg_advert_list_bottom[0];?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/ads/copyright.php';?>
 </center>
 
