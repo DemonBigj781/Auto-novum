@@ -73,7 +73,7 @@ table, th, td {
        echo '<input type="hidden" name="r" value="' . htmlspecialchars($referrer, ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '"/>';
        echo '<input type="hidden" name="rc" value="' . htmlspecialchars($referrer_currency, ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '"/>';
      }
-    else if($cfg_donate_mode = "Remotereffer"){
+    else if($cfg_donate_mode == "Remotereffer"){
              echo '<input type="hidden" name="r" value="' . htmlspecialchars('EC-UserId-9727',       ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '"/>';
              echo '<input type="hidden" name="rc" value="' . htmlspecialchars('BTC', ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '"/>';
         

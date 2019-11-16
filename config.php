@@ -3,9 +3,10 @@
   $cfg_MOTD = 'MOTD';
   $cfg_ad_rotate =false; //  enable the rotation of advertisements
   $cfg_url = 'example.com'; //url of site
-  $cfg_donate_mode = "Remotereffer";//Remotereffer for is someone is not referred to the site the script editor -DemonBigj781 will be the referrer
-  $cfg_refresh_time = 120; // Payout time in seconds.
+  $cfg_donate_mode = "";//Remotereffer for is someone is not referred to the site the script editor -DemonBigj781 will be the referrer
+  $cfg_refresh_time = 60; // Payout time in seconds.
   $cfg_real_refresh_time = $cfg_refresh_time; // Refresh time of the claim page.
+  $cfg_session_time = 7200;
 
   /* Enable and disable currencies. */
   $cfg_BTC_enabled  = false;
@@ -102,7 +103,7 @@
     $cfg_coinimp_site_key = '12345678901234567890';// your coinimp site key
   }
 
-  $cfg_use_shortlink = false; // It says eliwin but its linkrex
+  $cfg_use_shortlink = true; // It says eliwin but its linkrex
   if ($cfg_use_shortlink) {
     // You can change the shortlink provider in shortlink.lib.php
     // Changed to btcms: http://btc.ms/ref/japakar
@@ -141,10 +142,10 @@
     */
   }
 
-  $cfg_ec_username = 'YourUsername'; // Your ExpressCrypto username.
+  $cfg_ec_username = 'Username007'; // Your ExpressCrypto username.
   $cfg_ec_userToken = 'DIE BOTS DIE'; // Your server IP.
-  $cfg_site_name = 'examle.com'; // The faucet name.
-  $cfg_site_url = 'https://example.com/'; // The URL of the faucet.
+  $cfg_site_name = 'http://Example.com/'; // The faucet name.
+  $cfg_site_url = 'http://Example.com/'; // The URL of the faucet.
 
   /* Set this to the version of the faucet source you are using. (see http://semver.org)
    * If you change the source, be sure to add "+mod" (modified) to the version! */
@@ -153,8 +154,8 @@
   
   /* enable for human verification
   */
-  $cfg_human_verify = true;
-  if ($cfg_human_verify) {
+  $cfg_human_verify = false;
+  if ($cfg_human_verify == true) {
     $cfg_verify_mode ="solvemedia";
     switch ($cfg_verify_mode){
         case "solvemedia":

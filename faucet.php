@@ -61,7 +61,29 @@
     $errmsg = '<p>One of the parameters is empty.</p>';
     goto end_payout;
   }
-
+  $t = ''.$_GET['t'];
+  $limit = false;
+  $today      = new DateTime('now');
+  $tomorrow  = new DateTime('tomorrow');
+  $difference = $today->diff($tomorrow);
+  $h = $difference->format('%h');
+  $m = $difference->format('%i');
+  $s = $difference->format('%s');
+  $time = $h*3600 + $m * 60 + $s +10;
+  if(isset($_GET['ids']) && isset($_GET['v'])){
+    $idShortlink = $_GET['ids'];
+    $views = $_GET['v'];
+    $cookieName = "shortlink-".$idShortlink;
+    if(isset($_COOKIE[$cookieName]) && $_COOKIE[$cookieName] != $views)
+      setcookie($cookieName, $views);
+    else
+      setcookie($cookieName, ''.$views,time() + $time, "/"); 
+      
+  }
+  if(time() > $t){
+      $limit = true;
+      goto end_payout;
+  }
   switch ($currency) {
 	 case 'BTC':
      case 'BCH':
@@ -564,9 +586,12 @@
 
 <link rel="stylesheet" type="text/css" href="website.css">
 
-<title><?php echo $cfg_site_name; ?></title>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/custom/head.php'; ?>
+<title><?php if(!$limit) 
+            echo $cfg_site_name;
+            else echo 'Auto Faucet Fully Consumed'?></title>
 <?php
+
   if ($overload) {
     echo '<meta http-equiv="refresh" content="2;url=' . $cfg_site_url . '/441.php"/>';
   } else if ($too_fast) {
