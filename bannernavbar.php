@@ -97,7 +97,7 @@
 
 <div class="dropdown">
 
-     <a href="http://japakar.com/"><button class="dropbtn">HOME</button></a>
+     <a href="http://columbuscryptofaucet.tk/"><button class="dropbtn">HOME</button></a>
 
   <div class="dropdown-content">
 
@@ -111,14 +111,13 @@
 
 <div class="dropdown">
 
-  <button class="dropbtn">My Auto Faucets</button>
+  <button class="dropbtn">Sponsers</button>
 
   <div class="dropdown-content">
-<p><b>Use ALL at the same time!</p></b>
-<a href="http://auto1.japakar.com/" target="_blank">Auto 1</a>
-<a href="http://auto2.japakar.com/" target="_blank">Auto 2</a>
-<a href="http://auto3.japakar.com/" target="_blank">Auto 3</a>
-<a href="http://auto4.japakar.com/" target="_blank">Auto 4</a>
+<a href="https://jsecoin.com/o/?a=163115" target="_blank">JSECoin</a>
+<a href="https://randomsatoshi.win/autofaucet/?r=35559" target="_blank">randomsatoshi.win</a>
+<a href="https://ilmu.tech/sl/ref/DemonBigj781" target="_blank">ilmu.tech shortlink</a>
+<a href="https://adconity.com/?rid=12975" target="_blank">adconify</a>
 
   </div>
 
