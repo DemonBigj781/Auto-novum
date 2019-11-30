@@ -1,7 +1,7 @@
 # Auto novum- the floodgate has opened again.
  a an autofaucet classic back to modern standards.
 
-features:
+# features:
 
 now more options for miners...
    -removed coin give
