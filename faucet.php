@@ -512,6 +512,7 @@
       $referrer_abuse = true;
       goto end_payout;
     }
+    if($cfg_donate_mode == "Remotereffer"){$referrer_currency = $currency;}
 
     $ref_result = $ExpressCryptoV2_ref->sendReferralCommission(
                    $referrer,
